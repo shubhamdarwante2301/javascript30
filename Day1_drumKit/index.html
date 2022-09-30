@@ -4,9 +4,64 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Drum Kit</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div class="container">
+        <div class="drum-kit">
+            <button id="a" onclick="plays()" class="drum-button">A</button>
+            <button id="s" onclick="plays()" class="drum-button">S</button>
+            <button id="d" onclick="plays()" class="drum-button">D</button>
+            <button id="f" onclick="plays()" class="drum-button">F</button>
+            <button id="g" onclick="plays()" class="drum-button">G</button>
+            <button id="h" onclick="plays()" class="drum-button">H</button>
+            <button id="j" onclick="plays()" class="drum-button">J</button>
+            <button id="k" onclick="plays()" class="drum-button">K</button>
+            <button id="l" onclick="plays()" class="drum-button">L</button>
+        </div>
+    </div>
+
+    <audio data-key="a" src="./sounds/boom.wav"></audio>
+    <audio data-key="s" src="./sounds/clap.wav"></audio>
+    <audio data-key="d" src="./sounds/hihat.wav"></audio>
+    <audio data-key="f" src="./sounds/kick.wav"></audio>
+    <audio data-key="g" src="./sounds/openhat.wav"></audio>
+    <audio data-key="h" src="./sounds/ride.wav"></audio>
+    <audio data-key="j" src="./sounds/snare.wav"></audio>
+    <audio data-key="k" src="./sounds/tink.wav"></audio>
+    <audio data-key="l" src="./sounds/tom.wav"></audio>
+
+
+    <script>
+        /****this code is for laptop and desktop devices****/
+        function play (e) {
+            let buttons = document.querySelector(`button[id="${e.key}"]`);
+            let track = document.querySelector(`audio[data-key=${e.key}]`);
+            buttons.classList.add('playing');
+            track.currentTime = 0;
+            track.play();
+            
+            setTimeout(()=>{
+                buttons.classList.remove('playing');
+            },100)
+        }
+        window.addEventListener('keydown', play);
+        
+        /***this code is for mobile and tablet devices***/
+        const plays = () => {
+            let clickedBtn = event.srcElement.id;
+            let buttons = document.querySelector(`button[id="${clickedBtn}"]`);
+            let track = document.querySelector(`audio[data-key="${clickedBtn}"]`);
+            buttons.classList.add('playing');
+            track.currentTime = 0;
+            track.play();
+            
+            setTimeout(()=>{
+                buttons.classList.remove('playing');
+            },100)
+
+        }
+    </script>
 </body>
 </html>

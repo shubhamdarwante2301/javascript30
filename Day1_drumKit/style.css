@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: aliceblue;
+}
+.container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+.drum-kit {
+    background-color: aqua;
+    width: 90vw;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.drum-button {
+    width: 80px;
+    height: 80px;
+    font-size: 50px;
+    font-weight: 500;
+    margin: 10px;
+}
+.playing {
+    background-color: blueviolet;
+    color: white;
+}
